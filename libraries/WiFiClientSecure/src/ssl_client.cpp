@@ -240,7 +240,9 @@ int start_ssl_client(sslclient_context *ssl_client, uint32_t ipAddress, uint32_t
 
     while ((ret = mbedtls_ssl_handshake(&ssl_client->ssl_ctx)) != 0) {
         if (ret != MBEDTLS_ERR_SSL_WANT_READ && ret != MBEDTLS_ERR_SSL_WANT_WRITE && ret != -76) {
-            return handle_error(ret);
+            //return handle_error(ret);
+            printf("mbedtls_ssl_handshake returned -0x%x\n", -ret);
+            break;
 					  
 			 
 					  
